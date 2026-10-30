@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #020817;
+  --color-navy-900: #04102c;
+  --color-navy-800: #071a42;
+  --color-electric: #1a8cff;   /* primary glow blue (buttons, pill) */
+  --color-sky: #2fa2ff;        /* role / subtitle blue */
+  --color-gold: #f7c51e;       /* nav highlight, bullet dots, brand tag */
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Great Vibes", cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+  background: var(--color-navy-950);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #fff;
+  background: var(--color-navy-950);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Panel background — deep navy with the reference's blue light bloom from the right */
+.panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 70% at 88% 55%, rgba(26, 140, 255, 0.38), transparent 70%),
+    radial-gradient(40% 50% at 70% 100%, rgba(10, 80, 200, 0.35), transparent 70%),
+    linear-gradient(180deg, #04102c 0%, #030b22 55%, #020817 100%);
+}
+.panel--left-glow {
+  background:
+    radial-gradient(55% 60% at 12% 40%, rgba(26, 140, 255, 0.28), transparent 70%),
+    radial-gradient(60% 70% at 90% 60%, rgba(26, 140, 255, 0.32), transparent 70%),
+    linear-gradient(180deg, #04102c 0%, #030b22 55%, #020817 100%);
+}
+
+/* Faint script watermark behind headers (like the reference's signature) */
+.watermark {
+  font-family: var(--font-script);
+  color: rgba(70, 150, 255, 0.13);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Glowing blue pill title ("Work Experience") */
+.pill {
+  background: linear-gradient(180deg, #2a9bff 0%, #0f7ef0 100%);
+  border: 2px solid rgba(160, 210, 255, 0.55);
+  box-shadow:
+    0 0 28px rgba(26, 140, 255, 0.65),
+    0 0 70px rgba(26, 140, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Blue CTA ("Slide to see Gallery") */
+.cta {
+  background: linear-gradient(180deg, #1f95ff 0%, #0b74e6 100%);
+  box-shadow: 0 0 22px rgba(26, 140, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.cta:hover {
+  box-shadow: 0 0 34px rgba(26, 140, 255, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Blue rim light behind the portrait */
+.portrait-glow {
+  background: radial-gradient(50% 50% at 50% 45%, rgba(40, 150, 255, 0.55), rgba(26, 110, 255, 0.18) 55%, transparent 75%);
+  filter: blur(10px);
+}
+.portrait-img {
+  filter: drop-shadow(0 0 18px rgba(40, 150, 255, 0.45)) drop-shadow(-6px 0 12px rgba(40, 150, 255, 0.35));
+}
+
+/* Gallery tiles */
+.tile {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.tile:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 26px rgba(26, 140, 255, 0.45);
+}
+
+.dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px rgba(247, 197, 30, 0.6);
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tile, .cta { transition: none; }
+}
